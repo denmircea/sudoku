@@ -37,8 +37,8 @@ table.drawCircles(circles)
 table.colorSelect(mat, circles, constants.selectedValue)
 while running:
     pygame.display.update()
-    if(table.puzzleCompleted(mat)):
-        gameWindow.win(start)
+    if table.puzzleCompleted(mat) :
+        running = gameWindow.win(start)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

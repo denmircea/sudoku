@@ -1,11 +1,15 @@
 import constants
 import pygame
+import time
+
 # create screen
 
 screen = pygame.display.set_mode((constants.widthScreen, constants.heigthScreen))
 pygame.display.set_caption("Sudoku by Mircea")
 icon = pygame.image.load("icon.png")
 pygame.display.set_icon(icon)
+
+
 def welcomeScreen(start):
     pygame.init()
     screen.fill(constants.WHITE)
@@ -15,7 +19,7 @@ def welcomeScreen(start):
     start.height = 60
     start.setTextColor(constants.WHITE)
     start.draw(constants.BLACK)
-    start.setText("Start game",70)
+    start.setText("Start game", 70)
     pygame.display.update()
     while True:
         for event in pygame.event.get():
@@ -40,3 +44,8 @@ def win(start):
     start.draw(constants.BLACK)
     start.setText("YOU WIN", 70)
     pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return 0
+    return 0

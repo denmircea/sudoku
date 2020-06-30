@@ -20,7 +20,7 @@ class squareButton:
     def draw(self, color=constants.WHITE):
         gameWindow.pygame.draw.rect(gameWindow.screen, color, (self.x, self.y, self.width, self.height), 0)
 
-    def setText(self, text,fontSize=30):
+    def setText(self, text, fontSize=30):
         text=str(text)
 
         if text == '0':

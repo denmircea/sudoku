@@ -47,9 +47,46 @@ def colorDeselect(mat,circles):
     for i in range(0,10):
         circles[i].draw()
         circles[i].setText(i)
+
+
+def verifyLine(mat, line):
+    elem = [0 for x in range(10)]
+    for j in range(0,9):
+        elem[int(mat[line][j].text)]+=1
+    for i in range(1,10):
+        if elem[i]!=1:
+            return 0
+    return 1
+def verifyColumn(mat, column):
+    elem = [0 for x in range(10)]
+    for i in range(0, 9):
+        elem[int(mat[i][column].text)] += 1
+    for i in range(1, 10):
+        if elem[i] != 1:
+            return 0
+    return 1
+def verifyBox(x,y,mat):
+    elem = [0 for x in range(10)]
+    for i in range(0, 3):
+        for j in range(0, 3):
+            elem[int(mat[x+i][y+j].text)] += 1
+    for i in range(1, 10):
+        if elem[i] != 1:
+            return 0
+    return 1
+
 def puzzleCompleted(mat):
     for i in range(0, 9):
         for j in range(0, 9):
-            if mat[i][j].text=='':
+            if mat[i][j].text == '':
                 return 0
+    for i in range (0,3):
+        for j in range(0,3):
+            if verifyBox(i*3,j*3,mat) == False:
+                return 0
+    for i in range(0, 9):
+        if verifyLine(mat, i) and verifyColumn(mat,i):
+            pass
+        else:
+            return 0
     return 1
